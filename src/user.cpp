@@ -1,8 +1,9 @@
 #include "user.h"
 
 
-// QUESTION: Moving a const string, seriously?
-User::User(const std::string user_id) : user_id_(std::move(user_id)) {}
+// When trying to move a constant string, it performs a copy, instead
+// of a move. So, we should not move a constant string.
+User::User(std::string user_id) : user_id_(user_id) {}
 
 const std::string& User::GetUserId() const {
     return user_id_;
