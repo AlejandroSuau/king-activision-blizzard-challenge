@@ -2,7 +2,7 @@
 
 #include "user.h"
 
-#include <set>
+#include <unordered_set>
 
 #include "message_store.h"
 
@@ -24,8 +24,16 @@ public:
 private:
     // QUESTION: Why put messages store reference inside UsersController ...?
     MessageStore& message_store_;
-    // QUESTION: Why using a set (it is sorted ...). It should be unordered_set.
-    // Whats the complexity of set? How STL set internally works?
-    // How unordered_set works, what is the complexity?
-    std::set<User> users_; 
+
+    // # Unordered set
+    // - Complexity: O(1).
+    // - Order: All elements are sorted.
+    // - How internally works: is implemented using a hash table where keys are hashed
+    //   into indices of a hash table so that the insertion is always randomized.
+
+    // # Set
+    // - Complexity: O(LogN).
+    // - Order: All elements are sorted.
+    // - How internally works: are implemented using Binary Search Trees.
+    std::unordered_set<User, UserHashFunction> users_;
 };

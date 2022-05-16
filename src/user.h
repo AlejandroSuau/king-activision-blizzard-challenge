@@ -19,3 +19,9 @@ private:
 
     const std::string user_id_;
 };
+
+struct UserHashFunction {
+    size_t operator()(const User& u) const {
+        return std::hash<std::string>()(u.GetUserId());
+    }
+};

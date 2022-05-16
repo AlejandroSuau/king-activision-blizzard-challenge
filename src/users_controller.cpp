@@ -51,7 +51,7 @@ void UsersController::PrintAndRemoveUserReceivedMessages(
 }
 
 const User* UsersController::GetUser(const std::string user_id) const {
-    std::set<User>::iterator it = users_.find(User(user_id));
+    std::unordered_set<User>::const_iterator it = users_.find(User(user_id));
     if (it == users_.end()) {
         std::cout << "ERROR: User " << user_id << " doesn't exists" << std::endl;
         return nullptr;
