@@ -12,6 +12,9 @@ void MessageStore::AddMessage(const std::shared_ptr<const Message> message) {
     messages_.push_back(message);
 }
 
+// QUESTION: How to do more kind of sort? Asc/Desc ...
+// ANSWER: Creating new sort functions like this: SortMessagesASC,
+//         SortMessagesDESC, etc.
 void MessageStore::SortMessages() {
     auto comparator = [](const std::shared_ptr<const Message> left, 
                          const std::shared_ptr<const Message> right) {

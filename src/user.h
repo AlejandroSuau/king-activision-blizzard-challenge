@@ -12,7 +12,6 @@ public:
     const std::string& GetUserId() const;
 
 private:
-    // QUESTION: How to do more kind of sort? Asc/Desc ...
     friend bool operator<(const User& left, const User& right);
     friend bool operator==(const User& left, const User& right);
     friend bool operator!=(const User& left, const User& right);
