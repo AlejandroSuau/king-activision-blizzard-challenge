@@ -16,6 +16,9 @@ public:
 
 private:
     // QUESTION: What will happend if the User is delete (those references) where delete?.
+    // ANSWER: User& addresses will point to a incorrect memory address, so it will ends
+    //         with an unexpected behaviour. One way to solve this is using weak_ptr and 
+    //         its ".lock()" function.
     const User& user_from_;
     const User& user_to_;
     const std::string content_;
